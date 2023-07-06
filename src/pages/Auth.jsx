@@ -2,33 +2,31 @@ import React, { useEffect, useState } from "react";
 import { BsAt, BsFillUnlockFill } from "react-icons/bs";
 import { useForm } from "react-hook-form";
 import { signinAuth } from "../slices/authSlice";
-import { useDispatch } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { showAlert } from "../utils/alerts";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Auth = () => {
-  const [redirect, setRedirect] = useState(false);
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user = useSelector((state) => state.userAuth.user);
 
   function handleUserLogin(data) {
     if (!data.email || !data.password)
       return Swal.fire(showAlert.error("All fields are requried!"));
 
     dispatch(signinAuth(data));
-    setRedirect(true);
   }
 
-  useEffect(() => {
-    if (redirect) {
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 100);
-    }
-    setRedirect(false);
-  }, [handleUserLogin]);
+  if (user[0]?.token) {
+    setTimeout(() => {
+      navigate("/dashboard");
+    }, 100);
+  } else {
+    if (user.error) Swal.fire(showAlert.error(user.error));
+  }
 
   return (
     <main className="bg-slate-300 font-poppins">

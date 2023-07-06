@@ -18,7 +18,7 @@ const SideMenu = () => {
 
   return (
     <aside className="w-[300px] bg-slate-100 ring-1 ring-slate-300 sticky left-0 top-[50px]">
-      <div className="h-[93vh] flex flex-col justify-between items-center pb-4 pt-7">
+      <div className="h-[94vh] flex flex-col justify-between items-center pb-4 pt-7">
         <section className="w-full flex flex-col justify-center items-center font-poppins">
           <div className="w-36 h-36 bg-white rounded-full ring-1 ring-slate-300 overflow-hidden flex justify-center items-center">
             <img

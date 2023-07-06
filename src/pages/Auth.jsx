@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BsAt, BsFillUnlockFill } from "react-icons/bs";
 import { useForm } from "react-hook-form";
 import { signinAuth } from "../slices/authSlice";
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { showAlert } from "../utils/alerts";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -20,13 +20,8 @@ const Auth = () => {
     dispatch(signinAuth(data));
   }
 
-  if (user[0]?.token) {
-    setTimeout(() => {
-      navigate("/dashboard");
-    }, 100);
-  } else {
-    if (user.error) Swal.fire(showAlert.error(user.error));
-  }
+  if (user.error) Swal.fire(showAlert.error(user.error));
+  else navigate("/dashboard");
 
   return (
     <main className="bg-slate-300 font-poppins">

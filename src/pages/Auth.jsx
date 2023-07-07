@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BsAt, BsFillUnlockFill } from "react-icons/bs";
 import { useForm } from "react-hook-form";
 import { signinAuth } from "../slices/authSlice";
@@ -20,8 +20,17 @@ const Auth = () => {
     dispatch(signinAuth(data));
   }
 
-  if (user.error) Swal.fire(showAlert.error(user.error));
-  else navigate("/dashboard");
+  useEffect(() => {
+    if (user[0]?.token === undefined) {
+      if (user.error) {
+        Swal.fire(showAlert.error(user.error));
+      }
+    } else {
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 200);
+    }
+  }, [handleUserLogin]);
 
   return (
     <main className="bg-slate-300 font-poppins">

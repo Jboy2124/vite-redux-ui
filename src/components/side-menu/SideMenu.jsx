@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import { navigation } from "../../const/navigation";
 import { BsFacebook, BsLinkedin, BsTwitter } from "react-icons/bs";
 import { useDispatch } from "react-redux";
@@ -6,10 +6,9 @@ import { selectDisplay } from "../../slices/displaySelectorSlice";
 import { useSelector } from "react-redux";
 
 const SideMenu = () => {
-  const [selected, setSelected] = useState(0);
   const dispatch = useDispatch();
   const avatar = useSelector((state) => state.previewProfilePic.image);
-  console.log(avatar);
+  const user = useSelector((state) => state.userAuth.user);
 
   function handleSelectedMenu(e, id) {
     e.preventDefault();
@@ -27,8 +26,10 @@ const SideMenu = () => {
               className="object-cover object-center"
             />
           </div>
-          <p className="text-[13px] pt-2">Name</p>
-          <p className="text-[12px] text-gray-600 pb-8">email@example.com</p>
+          <p className="text-[17px] pt-2">Hi, {user[0]?.data?.fname}</p>
+          <p className="text-[12px] text-gray-600 pb-8">
+            {user[0]?.data?.email}
+          </p>
           <ul className="flex flex-col text-center space-y-2">
             {navigation.map((items) => {
               return (

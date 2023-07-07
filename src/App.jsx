@@ -23,14 +23,7 @@ const App = () => {
             </ProtectedRoutes>
           }
         />
-        <Route
-          path="/register"
-          element={
-            <ProtectedRoutes>
-              <Register />
-            </ProtectedRoutes>
-          }
-        />
+        <Route path="/register" element={<Register />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>

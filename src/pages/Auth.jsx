@@ -22,9 +22,7 @@ const Auth = () => {
 
   useEffect(() => {
     if (user[0]?.token === undefined) {
-      if (user.error) {
-        Swal.fire(showAlert.error(user.error));
-      }
+      if (user.error) Swal.fire(showAlert.error(user.error));
     } else {
       setTimeout(() => {
         navigate("/dashboard");

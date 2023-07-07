@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { showAlert } from "../../../utils/alerts";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getData } from "../../../slices/signupCredSlice";
-import { verifyEmail } from "../../../slices/emailVerificationSlice";
 
 const StepCard1 = (props) => {
   const { register, handleSubmit } = useForm();
   const dispatch = useDispatch();
-  const exist = useSelector((state) => state.emailVerify.existing);
 
   function handleSubmitForm(data) {
     if (!data.email || !data.password || !data.retypePassword)
@@ -18,15 +16,10 @@ const StepCard1 = (props) => {
     if (data.password !== data.retypePassword)
       return Swal.fire(showAlert.error("Password did not match!"));
 
-    // dispatch(verifyEmail({ email: data.email }));
     dispatch(getData(data));
 
     props.handleNext();
   }
-
-  // useEffect(() => {
-  //   console.log("exist: ", exist);
-  // }, [handleSubmitForm]);
 
   return (
     <section className="bg-gray-100 w-[400px] h-[500px] font-poppins text-gray-700 rounded-md shadow-md mt-5">

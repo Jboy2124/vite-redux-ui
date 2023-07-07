@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { showAlert } from "../../../utils/alerts";
 
 const StepCard2 = (props) => {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   const info = useSelector((state) => state.loginCred.data);
   const [addAccount] = useAddAccountMutation();
 
@@ -24,7 +24,6 @@ const StepCard2 = (props) => {
         email: info.email,
         password: info.password,
       });
-      // reset();
       props.handleNext();
     } catch (err) {
       return Swal.fire(showAlert.error(err));

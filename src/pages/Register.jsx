@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import StepCard1 from "../components/cards/steps/StepCard1";
+import StepCard2 from "../components/cards/steps/StepCard2";
+import StepCard3 from "../components/cards/steps/StepCard3";
 
 const Register = () => {
   const [regAuth, setRegAuth] = useState(true);
@@ -21,66 +23,25 @@ const Register = () => {
       setSelStep2(true);
     }
 
-    return (
-      <StepCard1 handleNext={handleNextStep1} />
-      // <div className="mt-10">
-      //   <StepCard1 />
-      //   {/* <button
-      //     type="button"
-      //     className="px-14 py-2 bg-gray-700 text-white"
-      //     onClick={(e) => handleNextStep1(e)}
-      //   >
-      //     Next
-      //   </button> */}
-      // </div>
-    );
+    return <StepCard1 handleNext={handleNextStep1} />;
   };
 
   const Step2 = () => {
-    function handleBackStep2(e) {
-      e.preventDefault();
-      setRegAuth(true);
-      setRegAccount(false);
-      setSelStep2(false);
-    }
-
-    function handleNextStep2(e) {
-      e.preventDefault();
+    function handleNextStep2() {
       setRegAccount(false);
       setComplete(true);
       setCompleteStep(true);
     }
 
-    return (
-      <div className="w-[400px] h-[400px] bg-green-400">
-        <p>Step 2</p>
-        <div className="flex justify-center items-center space-x-5">
-          <button
-            className="px-14 py-2 bg-gray-700 text-white"
-            onClick={(e) => handleBackStep2(e)}
-          >
-            Back
-          </button>
-          <button
-            className="px-14 py-2 bg-gray-700 text-white"
-            onClick={(e) => handleNextStep2(e)}
-          >
-            Next
-          </button>
-        </div>
-      </div>
-    );
+    return <StepCard2 handleNext={handleNextStep2} />;
   };
 
   const Step3 = () => {
-    return (
-      <div className="w-[400px] h-[400px] bg-blue-400">
-        <p>Step 3</p>
-      </div>
-    );
+    return <StepCard3 />;
   };
   return (
-    <main className="bg-slate-300 font-poppins">
+    <main className="bg-slate-300 flex flex-col justify-center items-center font-poppins">
+      <p className="mt-14 mb-[-70px] text-center text-[22px] font-semibold text-gray-700">Create Account</p>
       <section className="min-h-screen flex justify-center items-center">
         <ul className="steps text-blue-700">
           <li

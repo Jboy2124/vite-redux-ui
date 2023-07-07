@@ -73,7 +73,10 @@ const Auth = () => {
             </div>
             <p className="text-center text-[13px] mt-4">
               You don't have an account yet?{" "}
-              <span className="underline underline-offset-4 font-semibold cursor-pointer hover:text-orange-500 duration-300">
+              <span
+                className="underline underline-offset-4 font-semibold cursor-pointer hover:text-orange-500 duration-300"
+                onClick={() => navigate("/register")}
+              >
                 Signup
               </span>{" "}
               here.

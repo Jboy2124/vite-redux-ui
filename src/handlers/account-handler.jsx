@@ -4,7 +4,15 @@ const accountEnpoints = apiInstance.injectEndpoints({
   endpoints: (builder) => ({
     getAccounts: builder.query({
       query: () => "/account",
-      providesTags: ["Accoounts"],
+      providesTags: ["Accounts"],
+    }),
+    addAccount: builder.mutation({
+      query: (data) => ({
+        url: "/account",
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["Accounts"],
     }),
     addNewAvatar: builder.mutation({
       query: (data) => ({
@@ -12,9 +20,13 @@ const accountEnpoints = apiInstance.injectEndpoints({
         method: "POST",
         body: data,
       }),
-      invalidatesTags: ["Account"],
+      invalidatesTags: ["Accounts"],
     }),
   }),
 });
 
-export const { useGetAccountsQuery, useAddNewAvatarMutation } = accountEnpoints;
+export const {
+  useGetAccountsQuery,
+  useAddAccountMutation,
+  useAddNewAvatarMutation,
+} = accountEnpoints;

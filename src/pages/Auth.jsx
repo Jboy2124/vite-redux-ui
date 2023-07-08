@@ -43,7 +43,26 @@ const Auth = () => {
             Please enter your email & password
           </p>
           <form onSubmit={handleSubmit(handleUserLogin)}>
-            <div className="w-full mt-12 px-12 py-[5px]">
+            <div className="w-full mt-12 px-12 py-2">
+              <div className="relative">
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="Email address"
+                  className="peer w-full border-b-2 text-[13px] placeholder-transparent border-gray-400 outline-none bg-transparent py-2"
+                />
+                <label
+                  htmlFor="email"
+                  className="absolute left-0 -top-3 text-[12px] text-gray-400 
+                  peer-placeholder-shown:text-[14px] peer-placeholder-shown:text-gray-400 
+                  peer-placeholder-shown:top-[7px] transition-all duration-200 peer-focus:-top-3 peer-focus:text-[12px] peer-focus:text-gray-400"
+                >
+                  Email address
+                </label>
+              </div>
+            </div>
+
+            {/* <div className="w-full mt-12 px-12 py-[5px]">
               <div className="flex justify-start items-center bg-white shadow-sm">
                 <span className="pl-2 pr-1 text-gray-400">
                   <BsAt size={22} />
@@ -55,7 +74,7 @@ const Auth = () => {
                   {...register("email")}
                 />
               </div>
-            </div>
+            </div> */}
             <div className="w-full px-12 py-[5px]">
               <div className="flex justify-start items-center bg-white shadow-sm">
                 <span className="pl-2 pr-1 text-gray-400">

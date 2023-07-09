@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { showAlert } from "../utils/alerts";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { styles } from "../utils/styles/styles";
 
 const Auth = () => {
   const { register, handleSubmit } = useForm();
@@ -50,42 +51,29 @@ const Auth = () => {
                   type="email"
                   placeholder="Email address"
                   className="peer w-full border-b-2 text-[13px] placeholder-transparent border-gray-400 outline-none bg-transparent py-2"
+                  {...register("email")}
                 />
-                <label
-                  htmlFor="email"
-                  className="absolute left-0 -top-3 text-[12px] text-gray-400 
-                  peer-placeholder-shown:text-[14px] peer-placeholder-shown:text-gray-400 
-                  peer-placeholder-shown:top-[7px] transition-all duration-200 peer-focus:-top-3 peer-focus:text-[12px] peer-focus:text-gray-400"
-                >
+                <label htmlFor="email" className={`absolute ${styles.label}`}>
                   Email address
                 </label>
               </div>
             </div>
 
-            {/* <div className="w-full mt-12 px-12 py-[5px]">
-              <div className="flex justify-start items-center bg-white shadow-sm">
-                <span className="pl-2 pr-1 text-gray-400">
-                  <BsAt size={22} />
-                </span>
+            <div className="w-full px-12 py-[5px] mt-5">
+              <div className="relative">
                 <input
-                  type="email"
-                  placeholder="email@example.com"
-                  className="w-full py-2 pl-1 pr-2 rounded text-[13px] outline-none"
-                  {...register("email")}
-                />
-              </div>
-            </div> */}
-            <div className="w-full px-12 py-[5px]">
-              <div className="flex justify-start items-center bg-white shadow-sm">
-                <span className="pl-2 pr-1 text-gray-400">
-                  <BsFillUnlockFill size={22} />
-                </span>
-                <input
+                  id="password"
                   type="password"
-                  placeholder="password"
-                  className="w-full py-2 pl-1 pr-2 rounded text-[13px] outline-none"
+                  placeholder="Password"
+                  className="peer w-full border-b-2 text-[13px] placeholder-transparent border-gray-400 outline-none bg-transparent py-2"
                   {...register("password")}
                 />
+                <label
+                  htmlFor="password"
+                  className={`absolute ${styles.label}`}
+                >
+                  Password
+                </label>
               </div>
             </div>
             <div className="w-full mt-16 text-center">

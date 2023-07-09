@@ -2,10 +2,13 @@ import Main from "../components/main/Main";
 import Schedule from "../components/schedule/Schedule";
 import Settings from "../components/settings/Settings";
 import AboutUs from "../components/about/AboutUs";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { userLogout } from "../slices/authSlice";
 
 export function displaySelector(selectedId) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   let content;
 
   switch (selectedId) {
@@ -22,7 +25,11 @@ export function displaySelector(selectedId) {
       content = <Settings />;
       break;
     case 4:
-      navigate("/");
+      setTimeout(() => {
+        dispatch(userLogout({ user: [] }));
+        navigate("/");
+      }, 2000);
+
       break;
     default:
       content = <Main />;

@@ -34,7 +34,7 @@ const Auth = () => {
   return (
     <main className="bg-slate-300 font-poppins">
       <div className="min-h-screen flex justify-center items-center">
-        <section className="w-[400px] h-[500px] bg-gradient-to-br from-slate-200 from-60% to-[#4A55A2] rounded-md shadow-2xl">
+        <section className="w-[400px] h-[500px] bg-slate-200 rounded-md shadow-2xl">
           <div className="w-full py-2 px-2 text-[17px] font-semibold">
             <span className="text-[#4A55A2]">travel</span>
             <span className="text-orange-500">organizer</span>
@@ -49,7 +49,7 @@ const Auth = () => {
                 <input
                   id="email"
                   type="email"
-                  placeholder="Email address"
+                  placeholder="."
                   className="peer w-full border-b-2 text-[13px] placeholder-transparent border-gray-400 outline-none bg-transparent py-2"
                   {...register("email")}
                 />
@@ -64,7 +64,7 @@ const Auth = () => {
                 <input
                   id="password"
                   type="password"
-                  placeholder="Password"
+                  placeholder="."
                   className="peer w-full border-b-2 text-[13px] placeholder-transparent border-gray-400 outline-none bg-transparent py-2"
                   {...register("password")}
                 />

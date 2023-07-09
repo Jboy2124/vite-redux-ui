@@ -1,0 +1,1 @@
+export const avatarRandomColor = ['red', 'blue', 'green', 'indigo', 'pink', 'orange', 'yellow', 'lime', 'sky-blue', 'purple']

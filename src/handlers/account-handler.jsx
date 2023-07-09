@@ -3,7 +3,11 @@ import { apiInstance } from "../instances/apiInstance";
 const accountEnpoints = apiInstance.injectEndpoints({
   endpoints: (builder) => ({
     getAccounts: builder.query({
-      query: () => "/account",
+      query: (page) => `/account?page=${page}`,
+      providesTags: ["Accounts"],
+    }),
+    getTotalCount: builder.query({
+      query: () => "/account/total",
       providesTags: ["Accounts"],
     }),
     addAccount: builder.mutation({
@@ -23,9 +27,11 @@ const accountEnpoints = apiInstance.injectEndpoints({
       invalidatesTags: ["Accounts"],
     }),
   }),
+  overrideExisting: false,
 });
 
 export const {
+  useGetTotalCountQuery,
   useGetAccountsQuery,
   useAddAccountMutation,
   useAddNewAvatarMutation,

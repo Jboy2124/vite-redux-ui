@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import Avatar from "react-avatar";
+import { avatarRandomColor } from "../../utils/avatar-color/avatar";
 import { navigation } from "../../const/navigation";
 import { BsFacebook, BsLinkedin, BsTwitter } from "react-icons/bs";
 import { useDispatch } from "react-redux";
@@ -9,6 +11,7 @@ const SideMenu = () => {
   const dispatch = useDispatch();
   const avatar = useSelector((state) => state.previewProfilePic.image);
   const user = useSelector((state) => state.userAuth.user);
+  const fullname = user[0]?.data?.fname + " " + user[0]?.data?.lname;
 
   function handleSelectedMenu(e, id) {
     e.preventDefault();
@@ -17,15 +20,21 @@ const SideMenu = () => {
 
   return (
     <aside className="w-[300px] bg-slate-100 ring-1 ring-slate-300 sticky left-0 top-[50px]">
-      <div className="h-[94vh] flex flex-col justify-between items-center pb-4 pt-7">
+      <div className="h-[93vh] flex flex-col justify-between items-center pb-4 pt-7">
         <section className="w-full flex flex-col justify-center items-center font-poppins">
-          <div className="w-36 h-36 bg-white rounded-full ring-1 ring-slate-300 overflow-hidden flex justify-center items-center">
+          {/* <div className="w-36 h-36 bg-white rounded-full ring-1 ring-slate-300 overflow-hidden flex justify-center items-center">
             <img
               src={avatar}
               alt={!avatar ? "JA" : ""}
               className="object-cover object-center"
             />
-          </div>
+          </div> */}
+          <Avatar
+            // color={Avatar.getRandomColor("sitebase", ['red', 'blue', 'green', 'indigo'])}
+            name={fullname}
+            round={true}
+            size={100}
+          />
           <p className="text-[17px] pt-2">Hi, {user[0]?.data?.fname}</p>
           <p className="text-[12px] text-gray-600 pb-8">
             {user[0]?.data?.email}
